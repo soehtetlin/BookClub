@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Lora", ui-serif, Georgia, serif;
+
+  --color-paper: #faf7f2;
+  --color-paper-dark: #f0ebe3;
+  --color-ink: #2c2417;
+  --color-ink-muted: #6b5d4d;
+  --color-accent: #b85c38;
+  --color-accent-hover: #9a4a2b;
+  --color-accent-light: #f8ece6;
+  --color-sage: #5a7a6a;
+  --color-sage-light: #e8f0ec;
+  --color-sage-dark: #3d5a4c;
+  --color-border: #e5ddd2;
+  --color-card: #ffffff;
+  --color-gold: #d4a853;
+  --color-gold-light: #faf3e0;
+  --color-rose: #c76a7b;
+  --color-rose-light: #fce8ec;
+
+  --animate-fade-in: fade-in 0.5s ease-out both;
+  --animate-fade-in-up: fade-in-up 0.6s ease-out both;
+  --animate-fade-in-down: fade-in-down 0.4s ease-out both;
+  --animate-slide-in-right: slide-in-right 0.3s ease-out both;
+  --animate-scale-in: scale-in 0.3s ease-out both;
+  --animate-shimmer: shimmer 1.5s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
+  --animate-toast-in: toast-in 0.3s ease-out both;
+  --animate-toast-out: toast-out 0.3s ease-in both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes toast-out {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(16px) scale(0.96); }
+}
+
+@layer base {
+  html {
+    @apply antialiased scroll-smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans min-h-screen;
+  }
+
+  h1, h2, h3 {
+    @apply font-serif;
+  }
+
+  ::selection {
+    @apply bg-accent/20 text-ink;
+  }
+}
+
+@layer components {
+  .skeleton {
+    @apply bg-paper-dark rounded-lg animate-shimmer;
+    background-image: linear-gradient(
+      90deg,
+      var(--color-paper-dark) 0%,
+      var(--color-border) 40%,
+      var(--color-paper-dark) 80%
+    );
+    background-size: 200% 100%;
+  }
+
+  .glass {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 shadow-sm;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-rose;
+  }
+
+  .gradient-accent {
+    @apply bg-gradient-to-br from-accent to-rose;
+  }
+
+  .gradient-sage {
+    @apply bg-gradient-to-br from-sage to-sage-dark;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-accent/20;
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+}

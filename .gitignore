@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Local Environment Variables
+.env
+.env*.local
+**/.env
+**/.env*.local
+
+# Web Build Outputs
+web/dist/
+web/dist-ssr/
+
+# Mobile (Expo) Build Outputs & Cache
+mobile/.expo/
+mobile/dist/
+mobile/web-build/
+mobile/expo-env.d.ts
+mobile/ios/
+mobile/android/
+
+# System Files & Logs
+.DS_Store
+Thumbs.db
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE / Editor config
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.tsbuildinfo
+**/expo-env.d.ts
